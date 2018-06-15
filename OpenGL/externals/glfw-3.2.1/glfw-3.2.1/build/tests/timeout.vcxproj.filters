@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\Aditya\Files\DEVELOPER\OpenGL\OpenGL\externals\glfw-3.2.1\glfw-3.2.1\tests\timeout.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\Aditya\Files\DEVELOPER\OpenGL\OpenGL\externals\glfw-3.2.1\glfw-3.2.1\deps\glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="E:\Aditya\Files\DEVELOPER\OpenGL\OpenGL\externals\glfw-3.2.1\glfw-3.2.1\deps\glad\glad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\Aditya\Files\DEVELOPER\OpenGL\OpenGL\externals\glfw-3.2.1\glfw-3.2.1\tests\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1F835C78-2FA1-3E5E-8013-AAEDED719832}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{9A32C746-A6E2-3F7E-A0C2-507ED1350922}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
