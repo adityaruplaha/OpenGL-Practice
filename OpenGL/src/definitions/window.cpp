@@ -11,9 +11,7 @@ Window::Window(int width, int height, std::string name)
 	glfwMakeContextCurrent(window);
 
 	// Check for functioning GLAD systems.
-#ifndef GLAD_CHECK_SUCCESSFUL
 	GLAD_Init();
-#endif // !GLAD_CHECK_SUCCESSFUL	
 
 	glfwSetFramebufferSizeCallback(window,
 		[](GLFWwindow*, int w, int h)
@@ -22,7 +20,7 @@ Window::Window(int width, int height, std::string name)
 	});
 }
 
-GLFWwindow* Window::getWindow()
+GLFWwindow* Window::getWindowPointer()
 {
 	return window;
 }

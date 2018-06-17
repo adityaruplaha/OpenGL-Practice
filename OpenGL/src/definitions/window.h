@@ -9,7 +9,7 @@ public:
 
 	Window(int width, int height, std::string name);
 
-	GLFWwindow* getWindow();
+	GLFWwindow* getWindowPointer();
 
 private:
 	GLFWwindow* window;

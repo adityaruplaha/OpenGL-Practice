@@ -18,5 +18,4 @@ inline void GLAD_Init()
 	{
 		throw "Failed to initialize GLAD!\n";
 	}
-#define GLAD_CHECK_SUCCESSFUL
 }
