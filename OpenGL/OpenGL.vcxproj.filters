@@ -1,2 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{c8d93a5c-fa29-4540-bdb7-c5a4214fb847}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{66552822-7d58-416c-8680-8075c18af6b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\base">
+      <UniqueIdentifier>{aa520511-69bd-42ad-aa7f-f89e429f7da9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\glad.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\definitions\window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\definitions\base\base.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\definitions\window.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
