@@ -17,6 +17,7 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\definitions\window.cpp" />
+    <ClCompile Include="src\definitions\input_handler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\definitions\base\base.h">
@@ -25,5 +26,6 @@
     <ClInclude Include="src\definitions\window.h">
       <Filter>src\base</Filter>
     </ClInclude>
+    <ClInclude Include="src\definitions\input_handler.h" />
   </ItemGroup>
 </Project>

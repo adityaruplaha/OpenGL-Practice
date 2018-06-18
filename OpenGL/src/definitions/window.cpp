@@ -9,10 +9,10 @@ Window::Window(int width, int height, std::string name)
 		throw "Failed to create GLFW window\n";
 	}
 	glfwMakeContextCurrent(window);
+}
 
-	// Check for functioning GLAD systems.
-	GLAD_Init();
-
+void Window::setUp()
+{
 	glfwSetFramebufferSizeCallback(window,
 		[](GLFWwindow*, int w, int h)
 	{
