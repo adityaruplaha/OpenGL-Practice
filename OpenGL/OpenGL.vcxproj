@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\definitions\gl_core\program.cpp" />
+    <ClCompile Include="src\definitions\gl_core\shader.cpp" />
     <ClCompile Include="src\definitions\input_handler.cpp" />
     <ClCompile Include="src\definitions\window.cpp" />
     <ClCompile Include="src\glad.c" />
@@ -26,6 +28,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\definitions\base\base.h" />
+    <ClInclude Include="src\definitions\base\log.h" />
+    <ClInclude Include="src\definitions\gl_core\program.h" />
+    <ClInclude Include="src\definitions\gl_core\shader.h" />
     <ClInclude Include="src\definitions\input_handler.h" />
     <ClInclude Include="src\definitions\window.h" />
   </ItemGroup>

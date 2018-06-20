@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "input_handler.h"
 
 InputHandler::InputHandler(GLFWwindow* window)
@@ -10,22 +11,26 @@ void InputHandler::attach(GLFWwindow* window)
 	attached_window = window;
 }
 
-void InputHandler::handle(int key, std::function<void()> func)
+void InputHandler::connect(int key, std::function<void()> func)
 {
-	binds_.push_back(std::make_pair(key, func));
+	auto pair = std::make_pair(key, func);
+	binds.push_back(pair);
 }
 
-void InputHandler::handle(std::vector<std::pair<int, std::function<void()>>> binds)
+void InputHandler::disconnect(int key)
 {
-	for (auto e : binds)
+	for (int i = 0; i < binds.size(); i++)
 	{
-		binds_.push_back(e);
+		if (binds[i].first == key)
+			binds.erase(binds.begin() + i);
+
+		break;
 	}
 }
 
 void InputHandler::listen()
 {
-	for (auto b : binds_)
+	for (auto b : binds)
 	{
 		if (glfwGetKey(attached_window, b.first) == GLFW_PRESS)
 			(b.second)();

@@ -18,6 +18,8 @@
     </ClCompile>
     <ClCompile Include="src\definitions\window.cpp" />
     <ClCompile Include="src\definitions\input_handler.cpp" />
+    <ClCompile Include="src\definitions\gl_core\shader.cpp" />
+    <ClCompile Include="src\definitions\gl_core\program.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\definitions\base\base.h">
@@ -27,5 +29,8 @@
       <Filter>src\base</Filter>
     </ClInclude>
     <ClInclude Include="src\definitions\input_handler.h" />
+    <ClInclude Include="src\definitions\gl_core\shader.h" />
+    <ClInclude Include="src\definitions\gl_core\program.h" />
+    <ClInclude Include="src\definitions\base\log.h" />
   </ItemGroup>
 </Project>
