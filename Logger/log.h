@@ -17,11 +17,16 @@ public:
 
 	void log(int level, const char* format, ...);
 
-	static int LOG_SUCCESS;
-	static int LOG_INFO;
-	static int LOG_WARNING;
-	static int LOG_ERROR;
+	static const int LOG_SUCCESS;
+	static const int LOG_INFO;
+	static const int LOG_WARNING;
+	static const int LOG_ERROR;
+	static const int LOG_CRITICAL;
 
+	static std::string getLevel(int level);
+	
 private:
+	static const int LOG_UNKNOWN;
+
 	std::ofstream file;
 };

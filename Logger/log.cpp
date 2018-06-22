@@ -3,10 +3,13 @@
 
 #include "log.h"
 
-int Log::LOG_SUCCESS = FOREGROUND_GREEN | FOREGROUND_INTENSITY;
-int Log::LOG_INFO = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY;
-int Log::LOG_WARNING = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY;
-int Log::LOG_ERROR = FOREGROUND_RED | FOREGROUND_INTENSITY;
+const int Log::LOG_SUCCESS = FOREGROUND_GREEN | FOREGROUND_INTENSITY;
+const int Log::LOG_INFO = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY;
+const int Log::LOG_WARNING = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY;
+const int Log::LOG_ERROR = FOREGROUND_RED | FOREGROUND_INTENSITY;
+const int Log::LOG_CRITICAL = FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_INTENSITY;
+
+const int Log::LOG_UNKNOWN = BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE;
 
 Log::Log(std::string filename)
 {
@@ -39,13 +42,34 @@ void Log::log(int level, const char* format, ...)
 	va_end(args);
 	// 
 
+	auto lv = getLevel(level);
+
 	std::stringstream ss;
-	ss << time_buf << buf;
+	ss << time_buf << lv << buf;
 	auto str = ss.str();
 
 	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hStdOut, level);
+	SetConsoleTextAttribute(hStdOut, (lv == "<Unknown> " ? LOG_UNKNOWN : level));
 
 	std::cout << str << "\n";
 	file << str << "\n";
+}
+
+std::string Log::getLevel(int level)
+{
+	switch (level)
+	{
+	case(LOG_CRITICAL):
+		return "<Critical> ";
+	case(LOG_ERROR):
+		return "<Error> ";
+	case(LOG_WARNING):
+		return "<Warning> ";
+	case(LOG_INFO):
+		return "<Info> ";
+	case(LOG_SUCCESS):
+		return "<Success> ";
+	default:
+		return "<Unknown> ";
+	}
 }
