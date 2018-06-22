@@ -1,18 +1,18 @@
 #include <cstdarg>
 #include "program.h"
 
-Log Program::logger = Log("program.log");
+Log Program::logger = Log("logs/program.log");
 
 Program::Program()
 {
 	program = glCreateProgram();
-	logger.log("A new shader program was created at %n.\n", &program);
+	logger.log(Log::LOG_INFO, "A new shader program was created at %n.\n", &program);
 }
 
 Program::Program(int shader_count, ...)
 {
 	program = glCreateProgram();
-	logger.log("A new shader program was created at %n.\n", &program);
+	logger.log(Log::LOG_INFO, "A new shader program was created at %n.\n", &program);
 
 	va_list args;
 	va_start(args, shader_count);
@@ -32,19 +32,24 @@ Program::~Program()
 void Program::attach(Shader* shader)
 {
 	shaders.push_back(shader);
-	glAttachShader(program, shader->get());
 }
 
 void Program::link()
 {
+	for (auto shader : shaders)
+	{
+		glAttachShader(program, shader->get());
+	}
+
 	glLinkProgram(program);
+
 	int  success;
 	char infoLog[1024];
 	glGetProgramiv(program, GL_LINK_STATUS, &success);
 	if (!success)
 	{
 		glGetProgramInfoLog(program, 1024, NULL, infoLog);
-		logger.log("Program at %n failed to be linked.\n%s\n", &program, infoLog);
+		logger.log(Log::LOG_ERROR, "Program at %n failed to be linked.\n%s\n", &program, infoLog);
 	}
 
 	for (auto* shader : shaders)

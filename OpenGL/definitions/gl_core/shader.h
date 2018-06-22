@@ -2,7 +2,7 @@
 
 #include <fstream>
 #include <string>
-#include "..\base\base.h"
+#include "../base/base.h"
 
 class Shader
 {

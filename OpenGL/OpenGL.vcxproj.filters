@@ -12,25 +12,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\glad.c">
+    <ClCompile Include="glad.c">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\definitions\window.cpp" />
-    <ClCompile Include="src\definitions\input_handler.cpp" />
-    <ClCompile Include="src\definitions\gl_core\shader.cpp" />
-    <ClCompile Include="src\definitions\gl_core\program.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="definitions\input_handler.cpp" />
+    <ClCompile Include="definitions\window.cpp" />
+    <ClCompile Include="definitions\gl_core\program.cpp" />
+    <ClCompile Include="definitions\gl_core\shader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\definitions\base\base.h">
+    <ClInclude Include="definitions\input_handler.h" />
+    <ClInclude Include="definitions\window.h">
       <Filter>src\base</Filter>
     </ClInclude>
-    <ClInclude Include="src\definitions\window.h">
+    <ClInclude Include="definitions\base\base.h">
       <Filter>src\base</Filter>
     </ClInclude>
-    <ClInclude Include="src\definitions\input_handler.h" />
-    <ClInclude Include="src\definitions\gl_core\shader.h" />
-    <ClInclude Include="src\definitions\gl_core\program.h" />
-    <ClInclude Include="src\definitions\base\log.h" />
+    <ClInclude Include="definitions\gl_core\program.h" />
+    <ClInclude Include="definitions\gl_core\shader.h" />
   </ItemGroup>
 </Project>

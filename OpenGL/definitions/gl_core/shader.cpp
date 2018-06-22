@@ -3,7 +3,7 @@
 
 #include "shader.h"
 
-Log Shader::logger = Log("shader.log");
+Log Shader::logger = Log("logs/shader.log");
 
 Shader::Shader(std::string src, int type) : src(src), type(type)
 {}
@@ -11,7 +11,7 @@ Shader::Shader(std::string src, int type) : src(src), type(type)
 Shader::Shader(std::ifstream stream, int type) : type(type)
 {
 	shader = glCreateShader(this->type);
-	logger.log("A new %s was created at %n.\n", getShaderName(this->type), &shader);
+	logger.log(Log::LOG_INFO, "A new %s was created at %n.\n", getShaderName(this->type), &shader);
 
 	std::ostringstream ss;
 	ss << stream.rdbuf();
@@ -21,7 +21,7 @@ Shader::Shader(std::ifstream stream, int type) : type(type)
 Shader::~Shader()
 {
 	shader = glCreateShader(type);
-	logger.log("A new %s was created at %n.\n", getShaderName(type), &shader);
+	logger.log(Log::LOG_INFO, "A new %s was created at %n.\n", getShaderName(type), &shader);
 
 	glDeleteShader(shader);
 }
@@ -38,7 +38,7 @@ void Shader::compile()
 	if (!success)
 	{
 		glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-		logger.log("Shader compilation for %s at %n failed.\n%s\n", getShaderName(type), &shader, infoLog);
+		logger.log(Log::LOG_ERROR, "Shader compilation for %s at %n failed.\n%s\n", getShaderName(type), &shader, infoLog);
 	}
 }
 GLuint Shader::get()

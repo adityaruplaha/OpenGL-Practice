@@ -3,7 +3,7 @@
 #include <glad\glad.h>
 #include <GLFW\glfw3.h>
 
-#include "log.h"
+#include "Logger/log.h"
 
 class Initializer {
 
@@ -25,6 +25,5 @@ public:
 			throw "Failed to initialize GLAD!\n";
 		}
 	}
-
-
+	
 };
