@@ -1,18 +1,18 @@
 #include <cstdarg>
 #include "program.h"
 
-Log Program::logger = Log("logs/program.log");
+const std::string Program::log_name = "GLProgram";
 
 Program::Program()
 {
 	program = glCreateProgram();
-	logger.log(Log::LOG_INFO, "A new shader program was created at %n.\n", &program);
+	LOG_INFO(log_name, "A new shader program was created at %n.\n", &program);
 }
 
 Program::Program(int shader_count, ...)
 {
 	program = glCreateProgram();
-	logger.log(Log::LOG_INFO, "A new shader program was created at %n.\n", &program);
+	LOG_INFO(log_name, "A new shader program was created at %n.\n", &program);
 
 	va_list args;
 	va_start(args, shader_count);
@@ -38,6 +38,15 @@ void Program::link()
 {
 	for (auto shader : shaders)
 	{
+		if (!shader->is_compiled)
+		{
+			LOG_WARNING(log_name, "%n: A shader wasn't pre-compiled. Compiling it now...", &program);
+			shader->compile();
+			if (!shader->is_compiled)
+			{
+				LOG_CRITICAL(log_name, "%n: Shader couldn't be compiled!", &program);
+			}
+		}
 		glAttachShader(program, shader->get());
 	}
 
@@ -49,13 +58,9 @@ void Program::link()
 	if (!success)
 	{
 		glGetProgramInfoLog(program, 1024, NULL, infoLog);
-		logger.log(Log::LOG_ERROR, "Program at %n failed to be linked.\n%s\n", &program, infoLog);
+		LOG_ERROR(log_name, "Program at %n failed to be linked.\n%s\n", &program, infoLog);
 	}
-
-	for (auto* shader : shaders)
-	{
-		delete shader;
-	}
+	LOG_SUCCESS(log_name, "Program at %n was linked successfully.", &program);
 }
 
 void Program::start()

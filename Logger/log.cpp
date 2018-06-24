@@ -11,17 +11,7 @@ const int Log::LOG_CRITICAL = FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_INTE
 
 const int Log::LOG_UNKNOWN = BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE;
 
-Log::Log(std::string filename)
-{
-	file.open(filename, std::ofstream::out | std::ofstream::trunc);
-}
-
-Log::~Log()
-{
-	file.close();
-}
-
-void Log::log(int level, const char* format, ...)
+void Log::log(int level, int line, std::string from, const char* format, ...)
 {
 	// get time
 	time_t rawtime;
@@ -34,25 +24,25 @@ void Log::log(int level, const char* format, ...)
 	// generate log
 	va_list args;
 	va_start(args, format);
-
-
-	char buf[256];
+	char buf[512];
 	vsprintf_s(buf, format, args);
-
 	va_end(args);
-	// 
+	// end generate log
 
 	auto lv = getLevel(level);
 
 	std::stringstream ss;
-	ss << time_buf << lv << buf;
+	ss << time_buf << lv << "\t(" << from << "):" << line << "\t" << buf;
 	auto str = ss.str();
 
 	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hStdOut, (lv == "<Unknown> " ? LOG_UNKNOWN : level));
 
 	std::cout << str << "\n";
-	file << str << "\n";
+	if (level == LOG_CRITICAL)
+	{
+		throw str;
+	}
 }
 
 std::string Log::getLevel(int level)
@@ -60,16 +50,18 @@ std::string Log::getLevel(int level)
 	switch (level)
 	{
 	case(LOG_CRITICAL):
-		return "<Critical> ";
+		return "<Critical>";
 	case(LOG_ERROR):
-		return "<Error> ";
+		return "<Error>";
 	case(LOG_WARNING):
-		return "<Warning> ";
+		return "<Warning>";
 	case(LOG_INFO):
-		return "<Info> ";
+		return "<Info>";
 	case(LOG_SUCCESS):
-		return "<Success> ";
+		return "<Success>";
 	default:
-		return "<Unknown> ";
+		return "<Unknown>";
 	}
 }
+
+extern std::shared_ptr<Log> logger = std::make_shared<Log>(Log());

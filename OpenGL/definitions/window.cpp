@@ -6,7 +6,7 @@ Window::Window(int width, int height, std::string name)
 	if (window == NULL)
 	{
 		glfwTerminate();
-		throw "Failed to create GLFW window\n";
+		LOG_CRITICAL(log_name, "Failed to create GLFW window\n");
 	}
 	glfwMakeContextCurrent(window);
 }
@@ -24,3 +24,5 @@ GLFWwindow* Window::getWindowPointer()
 {
 	return window;
 }
+
+const std::string Window::log_name = "Window";

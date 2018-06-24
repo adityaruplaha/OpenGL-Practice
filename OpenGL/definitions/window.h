@@ -13,4 +13,5 @@ public:
 
 private:
 	GLFWwindow* window;
+	static const std::string log_name;
 };

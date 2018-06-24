@@ -14,6 +14,8 @@ public:
 	void compile();
 	GLuint get();
 
+	bool is_compiled;
+
 private:
 	std::string src;
 	GLuint shader;
@@ -21,6 +23,6 @@ private:
 
 	static std::string getShaderName(int type);
 
-	static Log logger;
+	const static std::string log_name;
 };
 

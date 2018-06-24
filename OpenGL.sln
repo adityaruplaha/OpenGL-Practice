@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL", "OpenGL\OpenGL.vcxproj", "{3C11CB0F-2112-4B2E-A85C-013FA9CF982C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8708024E-0749-491B-9265-FA1BA29D5A48} = {8708024E-0749-491B-9265-FA1BA29D5A48}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "shaders", "shaders\shaders.vcxproj", "{7537897F-5AB3-40C6-B050-A2A42C62B67A}"
 EndProject
