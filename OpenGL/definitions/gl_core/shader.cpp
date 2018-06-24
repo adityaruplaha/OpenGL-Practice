@@ -6,12 +6,15 @@
 const std::string Shader::log_name = "GLShader";
 
 Shader::Shader(std::string src, int type) : src(src), type(type)
-{}
+{
+	shader = glCreateShader(this->type);
+	LOG_INFO(log_name, "A new %s was created at %p.", getShaderName(this->type).c_str(), &shader);
+}
 
 Shader::Shader(std::ifstream stream, int type) : type(type)
 {
 	shader = glCreateShader(this->type);
-	LOG_INFO(log_name, "A new %s was created at %n.\n", getShaderName(this->type), &shader);
+	LOG_INFO(log_name, "A new %s was created at %p.", getShaderName(this->type).c_str(), &shader);
 
 	std::ostringstream ss;
 	ss << stream.rdbuf();
@@ -21,7 +24,7 @@ Shader::Shader(std::ifstream stream, int type) : type(type)
 Shader::~Shader()
 {
 	shader = glCreateShader(type);
-	LOG_INFO(log_name, "A new %s was created at %n.\n", getShaderName(type), &shader);
+	LOG_INFO(log_name, "%p: Shader deleted.", getShaderName(type), &shader);
 
 	glDeleteShader(shader);
 }
@@ -38,9 +41,11 @@ void Shader::compile()
 	if (!success)
 	{
 		glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-		LOG_ERROR(log_name, "Shader compilation for %s at %n failed.\n%s\n", getShaderName(type), &shader, infoLog);
+		LOG_ERROR(log_name, "Shader compilation for %s at %p failed.\n%s", getShaderName(type).c_str(), &shader, infoLog);
+		return;
 	}
-	LOG_SUCCESS(log_name, "%s at %n was compiled successfully.", getShaderName(type), &shader);
+	LOG_SUCCESS(log_name, "%s at %p was compiled successfully.", getShaderName(type).c_str(), &shader);
+	is_compiled = true;
 }
 GLuint Shader::get()
 {

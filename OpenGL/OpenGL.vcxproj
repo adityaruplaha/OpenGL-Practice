@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClCompile Include="definitions\gl_core\program.cpp" />
     <ClCompile Include="definitions\gl_core\shader.cpp" />
+    <ClCompile Include="definitions\gl_core\vao.cpp" />
+    <ClCompile Include="definitions\gl_core\vbo.cpp" />
     <ClCompile Include="definitions\input_handler.cpp" />
     <ClCompile Include="definitions\window.cpp" />
     <ClCompile Include="glad.c" />
@@ -30,6 +32,8 @@
     <ClInclude Include="definitions\base\base.h" />
     <ClInclude Include="definitions\gl_core\program.h" />
     <ClInclude Include="definitions\gl_core\shader.h" />
+    <ClInclude Include="definitions\gl_core\vao.h" />
+    <ClInclude Include="definitions\gl_core\vbo.h" />
     <ClInclude Include="definitions\input_handler.h" />
     <ClInclude Include="definitions\window.h" />
   </ItemGroup>

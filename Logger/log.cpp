@@ -31,17 +31,16 @@ void Log::log(int level, int line, std::string from, const char* format, ...)
 
 	auto lv = getLevel(level);
 
-	std::stringstream ss;
-	ss << time_buf << lv << "\t(" << from << "):" << line << "\t" << buf;
-	auto str = ss.str();
+	char ss[1024];
+	sprintf_s(ss, "%s <%s>\t(%s:%i)\t%s", std::string(time_buf).c_str(), lv.c_str(), from.c_str(), line, std::string(buf).c_str());
 
 	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hStdOut, (lv == "<Unknown> " ? LOG_UNKNOWN : level));
 
-	std::cout << str << "\n";
+	std::cout << ss << "\n";
 	if (level == LOG_CRITICAL)
 	{
-		throw str;
+		throw ss;
 	}
 }
 
@@ -50,17 +49,17 @@ std::string Log::getLevel(int level)
 	switch (level)
 	{
 	case(LOG_CRITICAL):
-		return "<Critical>";
+		return "Critical";
 	case(LOG_ERROR):
-		return "<Error>";
+		return "Error";
 	case(LOG_WARNING):
-		return "<Warning>";
+		return "Warning";
 	case(LOG_INFO):
-		return "<Info>";
+		return "Info";
 	case(LOG_SUCCESS):
-		return "<Success>";
+		return "Success";
 	default:
-		return "<Unknown>";
+		return "Unknown";
 	}
 }
 

@@ -20,6 +20,8 @@
     <ClCompile Include="definitions\window.cpp" />
     <ClCompile Include="definitions\gl_core\program.cpp" />
     <ClCompile Include="definitions\gl_core\shader.cpp" />
+    <ClCompile Include="definitions\gl_core\vbo.cpp" />
+    <ClCompile Include="definitions\gl_core\vao.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="definitions\input_handler.h" />
@@ -31,5 +33,7 @@
     </ClInclude>
     <ClInclude Include="definitions\gl_core\program.h" />
     <ClInclude Include="definitions\gl_core\shader.h" />
+    <ClInclude Include="definitions\gl_core\vbo.h" />
+    <ClInclude Include="definitions\gl_core\vao.h" />
   </ItemGroup>
 </Project>
