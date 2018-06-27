@@ -1,18 +1,16 @@
 #include <cstdarg>
 #include "program.h"
 
-const std::string Program::log_name = "GLProgram";
-
 Program::Program()
 {
 	program = glCreateProgram();
-	LOG_INFO(log_name, "A new shader program was created at %p.", &program);
+	LOG_INFO("A new shader program was created at 0x%p.", &program);
 }
 
 Program::Program(int shader_count, ...)
 {
 	program = glCreateProgram();
-	LOG_INFO(log_name, "A new shader program was created at %p.", &program);
+	LOG_INFO("A new shader program was created at 0x%p.", &program);
 
 	va_list args;
 	va_start(args, shader_count);
@@ -40,11 +38,11 @@ void Program::link()
 	{
 		if (!shader->is_compiled)
 		{
-			LOG_WARNING(log_name, "%p: A shader wasn't pre-compiled. Compiling it now...", &program);
+			LOG_WARNING("0x%p: A shader wasn't pre-compiled. Compiling it now...", &program);
 			shader->compile();
 			if (!shader->is_compiled)
 			{
-				LOG_CRITICAL(log_name, "%p: Shader couldn't be compiled!", &program);
+				LOG_CRITICAL("0x%p: Shader couldn't be compiled!", &program);
 			}
 		}
 		glAttachShader(program, shader->get());
@@ -58,10 +56,10 @@ void Program::link()
 	if (!success)
 	{
 		glGetProgramInfoLog(program, 1024, NULL, infoLog);
-		LOG_ERROR(log_name, "Program at %p failed to be linked.\n%s", &program, infoLog);
+		LOG_ERROR("Program at 0x%p failed to be linked.\n%s", &program, infoLog);
 		return;
 	}
-	LOG_SUCCESS(log_name, "Program at %p was linked successfully.", &program);
+	LOG_SUCCESS("Program at 0x%p was linked successfully.", &program);
 }
 
 void Program::start()

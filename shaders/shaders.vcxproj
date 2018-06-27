@@ -18,6 +18,12 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="vertex.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fragment.frag" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{7537897F-5AB3-40C6-B050-A2A42C62B67A}</ProjectGuid>

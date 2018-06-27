@@ -22,7 +22,5 @@ private:
 	const int type;
 
 	static std::string getShaderName(int type);
-
-	const static std::string log_name;
 };
 

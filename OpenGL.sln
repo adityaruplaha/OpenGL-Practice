@@ -5,12 +5,12 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL", "OpenGL\OpenGL.vcxproj", "{3C11CB0F-2112-4B2E-A85C-013FA9CF982C}"
 	ProjectSection(ProjectDependencies) = postProject
-		{8708024E-0749-491B-9265-FA1BA29D5A48} = {8708024E-0749-491B-9265-FA1BA29D5A48}
+		{DB588258-3738-4F21-9770-F7DCFD394751} = {DB588258-3738-4F21-9770-F7DCFD394751}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "shaders", "shaders\shaders.vcxproj", "{7537897F-5AB3-40C6-B050-A2A42C62B67A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Logger", "Logger\Log.vcxproj", "{8708024E-0749-491B-9265-FA1BA29D5A48}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QuikLogProject", "QuikLogProject\QuikLogProject.vcxproj", "{DB588258-3738-4F21-9770-F7DCFD394751}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,14 +36,14 @@ Global
 		{7537897F-5AB3-40C6-B050-A2A42C62B67A}.Release|x64.Build.0 = Release|x64
 		{7537897F-5AB3-40C6-B050-A2A42C62B67A}.Release|x86.ActiveCfg = Release|Win32
 		{7537897F-5AB3-40C6-B050-A2A42C62B67A}.Release|x86.Build.0 = Release|Win32
-		{8708024E-0749-491B-9265-FA1BA29D5A48}.Debug|x64.ActiveCfg = Debug|x64
-		{8708024E-0749-491B-9265-FA1BA29D5A48}.Debug|x64.Build.0 = Debug|x64
-		{8708024E-0749-491B-9265-FA1BA29D5A48}.Debug|x86.ActiveCfg = Debug|Win32
-		{8708024E-0749-491B-9265-FA1BA29D5A48}.Debug|x86.Build.0 = Debug|Win32
-		{8708024E-0749-491B-9265-FA1BA29D5A48}.Release|x64.ActiveCfg = Release|x64
-		{8708024E-0749-491B-9265-FA1BA29D5A48}.Release|x64.Build.0 = Release|x64
-		{8708024E-0749-491B-9265-FA1BA29D5A48}.Release|x86.ActiveCfg = Release|Win32
-		{8708024E-0749-491B-9265-FA1BA29D5A48}.Release|x86.Build.0 = Release|Win32
+		{DB588258-3738-4F21-9770-F7DCFD394751}.Debug|x64.ActiveCfg = Debug|x64
+		{DB588258-3738-4F21-9770-F7DCFD394751}.Debug|x64.Build.0 = Debug|x64
+		{DB588258-3738-4F21-9770-F7DCFD394751}.Debug|x86.ActiveCfg = Debug|Win32
+		{DB588258-3738-4F21-9770-F7DCFD394751}.Debug|x86.Build.0 = Debug|Win32
+		{DB588258-3738-4F21-9770-F7DCFD394751}.Release|x64.ActiveCfg = Release|x64
+		{DB588258-3738-4F21-9770-F7DCFD394751}.Release|x64.Build.0 = Release|x64
+		{DB588258-3738-4F21-9770-F7DCFD394751}.Release|x86.ActiveCfg = Release|Win32
+		{DB588258-3738-4F21-9770-F7DCFD394751}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

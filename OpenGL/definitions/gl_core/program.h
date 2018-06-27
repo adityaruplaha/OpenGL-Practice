@@ -19,6 +19,4 @@ public:
 private:
 	GLuint program;
 	std::vector<Shader*> shaders;
-
-	const static std::string log_name;
 };

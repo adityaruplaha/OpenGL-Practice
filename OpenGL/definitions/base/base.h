@@ -1,9 +1,9 @@
 #pragma once
 
-#include <glad\glad.h>
-#include <GLFW\glfw3.h>
+#include <GLinclude/glad/glad.h>
+#include <GLinclude/GLFW/glfw3.h>
 
-#include "Logger/log.h"
+#include <QuikLog/QuikLog/log.h>
 
 class Initializer {
 
