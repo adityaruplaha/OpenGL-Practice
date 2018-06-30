@@ -11,7 +11,7 @@ VAO::VAO()
 void VAO::bind()
 {
 	glBindVertexArray(vao);
-	LOG_INFO("%p: VAO bound.", &vao);
+	LOG_INFO("0x%p: VAO bound.", &vao);
 }
 
 void VAO::unbind()

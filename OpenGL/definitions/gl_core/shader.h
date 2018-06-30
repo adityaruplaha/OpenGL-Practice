@@ -14,7 +14,7 @@ public:
 	void compile();
 	GLuint get();
 
-	bool is_compiled;
+	bool is_compiled = false;
 
 private:
 	std::string src;

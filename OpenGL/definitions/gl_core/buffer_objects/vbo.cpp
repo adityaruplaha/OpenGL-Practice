@@ -1,23 +1,16 @@
 #include "vbo.h"
 
-VBO::VBO(float* buffer_data)
+VBO::VBO(std::vector<float> buffer_data, std::vector<int> slice_attribs)
 {
 	glGenBuffers(1, &vbo);
 	LOG_SUCCESS("New VBO created at 0x%p.", &vbo);
 	bind();
-	glBufferData(GL_ARRAY_BUFFER, sizeof(buffer_data), buffer_data, GL_STATIC_DRAW);
-	if (glGetError() == GL_NO_ERROR)
+	if (!buffer_data.size())
 	{
-		LOG_SUCCESS("0x%p: Buffer data initialized successfully.", &vbo);
+		LOG_ERROR("0x%p: Empty buffer passed as a argument.", &vbo);
 	}
-}
-
-VBO::VBO(float* buffer_data, std::initializer_list<int> slice_attribs)
-{
-	glGenBuffers(1, &vbo);
-	LOG_SUCCESS("New VBO created at 0x%p.", &vbo);
-	bind();
-	glBufferData(GL_ARRAY_BUFFER, sizeof(buffer_data), buffer_data, GL_STATIC_DRAW);
+	copyFrom(buffer_data);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * buffer_data.size(), buffer_data_internal, GL_STATIC_DRAW);
 	if (glGetError() == GL_NO_ERROR)
 	{
 		LOG_SUCCESS("0x%p: Buffer data initialized successfully.", &vbo);
@@ -30,7 +23,7 @@ VBO::VBO(float* buffer_data, std::initializer_list<int> slice_attribs)
 	slice_using(slice_attribs);
 }
 
-void VBO::slice_using(std::initializer_list<int> slice_attribs)
+void VBO::slice_using(std::vector<int> slice_attribs)
 {
 	// bind just in case it was unbound earlier;
 	bind();
@@ -60,6 +53,17 @@ void VBO::slice_using(std::initializer_list<int> slice_attribs)
 		}
 		i++;
 		offset += size;
+	}
+}
+
+void VBO::copyFrom(std::vector<float> data)
+{
+	auto size = data.size();
+	buffer_data_internal = new float[size];
+	int i = 0;
+	for (i = 0; i < data.size(); i++)
+	{
+		buffer_data_internal[i] = data[i];
 	}
 }
 

@@ -19,10 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="definitions\entities\object.cpp" />
+    <ClCompile Include="definitions\gl_core\buffer_objects\ebo.cpp" />
     <ClCompile Include="definitions\gl_core\program.cpp" />
     <ClCompile Include="definitions\gl_core\shader.cpp" />
-    <ClCompile Include="definitions\gl_core\vao.cpp" />
-    <ClCompile Include="definitions\gl_core\vbo.cpp" />
+    <ClCompile Include="definitions\gl_core\buffer_objects\vao.cpp" />
+    <ClCompile Include="definitions\gl_core\buffer_objects\vbo.cpp" />
     <ClCompile Include="definitions\input_handler.cpp" />
     <ClCompile Include="definitions\window.cpp" />
     <ClCompile Include="glad.c" />
@@ -30,10 +32,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="definitions\base\base.h" />
+    <ClInclude Include="definitions\entities\object.h" />
+    <ClInclude Include="definitions\gl_core\buffer_objects.h" />
+    <ClInclude Include="definitions\gl_core\buffer_objects\ebo.h" />
     <ClInclude Include="definitions\gl_core\program.h" />
     <ClInclude Include="definitions\gl_core\shader.h" />
-    <ClInclude Include="definitions\gl_core\vao.h" />
-    <ClInclude Include="definitions\gl_core\vbo.h" />
+    <ClInclude Include="definitions\gl_core\buffer_objects\vao.h" />
+    <ClInclude Include="definitions\gl_core\buffer_objects\vbo.h" />
     <ClInclude Include="definitions\input_handler.h" />
     <ClInclude Include="definitions\window.h" />
   </ItemGroup>
