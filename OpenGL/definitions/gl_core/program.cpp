@@ -71,3 +71,33 @@ void Program::stop()
 {
 	glUseProgram(0);
 }
+
+void Program::setBool(std::string name, bool b)
+{
+	glUniform1i(glGetUniformLocation(program, name.c_str()), (int)b);
+}
+
+void Program::setFloat(std::string name, float f)
+{
+	glUniform1f(glGetUniformLocation(program, name.c_str()), f);
+}
+
+void Program::setInt(std::string name, int i)
+{
+	glUniform1i(glGetUniformLocation(program, name.c_str()), i);
+}
+
+void Program::setVec2(std::string name, float f1, float f2)
+{
+	glUniform2f(glGetUniformLocation(program, name.c_str()), f1, f2);
+}
+
+void Program::setVec3(std::string name, float f1, float f2, float f3)
+{
+	glUniform3f(glGetUniformLocation(program, name.c_str()), f1, f2, f3);
+}
+
+void Program::setVec4(std::string name, float f1, float f2, float f3, float f4)
+{
+	glUniform4f(glGetUniformLocation(program, name.c_str()), f1, f2, f3, f4);
+}

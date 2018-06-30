@@ -16,6 +16,13 @@ public:
 	void start();
 	void stop();
 
+	void setBool(std::string name, bool b);
+	void setFloat(std::string name, float f);
+	void setInt(std::string name, int i);
+	void setVec2(std::string name, float f1, float f2);
+	void setVec3(std::string name, float f1, float f2, float f3);
+	void setVec4(std::string name, float f1, float f2, float f3, float f4);
+
 private:
 	GLuint program;
 	std::vector<Shader*> shaders;
